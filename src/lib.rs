@@ -210,7 +210,7 @@ impl MemoryEditor {
         self.handle_keyboard_edit_input(&address_space, ui.ctx());
 
         let mut scroll = ScrollArea::vertical()
-            .id_source(selected_address_range)
+            .id_salt(selected_address_range)
             .max_height(f32::INFINITY)
             .auto_shrink([false, true]);
 
@@ -302,10 +302,10 @@ impl MemoryEditor {
                         let response = ui.add(
                             TextEdit::singleline(&mut frame_data.selected_edit_address_string)
                                 .desired_width(frame_data.previous_frame_text_edit_size)
-                                .margin(Margin::symmetric(0., 0.))
+                                .margin(Margin::symmetric(0, 0))
                                 .font(options.memory_editor_text_style.clone())
                                 .hint_text(label_text)
-                                .id_source(frame_data.selected_edit_address),
+                                .id_salt(frame_data.selected_edit_address),
                         );
 
                         if frame_data.selected_edit_address_request_focus {
